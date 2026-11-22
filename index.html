@@ -13,8 +13,8 @@
       content="MyCoachNutri aide à suivre simplement calories, repas, activité, pas et eau."
     />
     <title>MyCoachNutri</title>
-    <link rel="manifest" href="manifest.json?v=32" />
-    <link rel="stylesheet" href="style-v32.css" />
+    <link rel="manifest" href="manifest.json?v=35" />
+    <link rel="stylesheet" href="style-v35.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -142,8 +142,24 @@
             <h2 id="day-title">Ma journée</h2>
           </div>
 
+          <div class="backup-banner" id="backup-banner" hidden>
+            <p>💾 Pensez à sauvegarder vos données (Réglages), elles ne sont que sur ce téléphone.</p>
+            <div class="backup-banner-actions">
+              <button class="secondary-action" type="button" data-view-target="settings">Sauvegarder</button>
+              <button class="link-action" type="button" id="backup-snooze">Plus tard</button>
+            </div>
+          </div>
+
           <section class="day-block" aria-labelledby="day-meals-title">
             <h3 id="day-meals-title">Repas</h3>
+            <section class="day-mode" id="day-mode" hidden>
+              <p class="day-mode-title">Comment voulez-vous suivre aujourd’hui ?</p>
+              <div class="day-mode-switch" role="group" aria-label="Façon de suivre la journée" id="day-mode-switch">
+                <button type="button" data-day-mode="plan">🥗 Je suis mon plan</button>
+                <button type="button" data-day-mode="free">✍️ Je fais ma journée</button>
+              </div>
+              <p class="day-mode-help" id="day-mode-help"></p>
+            </section>
             <div class="plan-budget" id="plan-budget" hidden></div>
             <section class="deficit-card" id="deficit-card" aria-live="polite" hidden>
               <p class="deficit-card-title">📉 Mon déficit du jour</p>
@@ -184,24 +200,28 @@
             <div class="meal-moment-grid">
               <article class="meal-moment-card meal-breakfast">
                 <h4>☀️ Petit-déjeuner</h4>
+                <p class="meal-budget" data-meal-budget="breakfast" hidden></p>
                 <div class="planned-meal" data-planned-slot="breakfast" hidden></div>
                 <button class="secondary-action meal-other" type="button" data-meal-type="breakfast">＋ Noter autre chose</button>
                 <ul class="entry-list compact-list" data-meal-list="breakfast" aria-label="Petits-déjeuners ajoutés"></ul>
               </article>
               <article class="meal-moment-card meal-lunch">
                 <h4>🍽️ Déjeuner</h4>
+                <p class="meal-budget" data-meal-budget="lunch" hidden></p>
                 <div class="planned-meal" data-planned-slot="lunch" hidden></div>
                 <button class="secondary-action meal-other" type="button" data-meal-type="lunch">＋ Noter autre chose</button>
                 <ul class="entry-list compact-list" data-meal-list="lunch" aria-label="Déjeuners ajoutés"></ul>
               </article>
               <article class="meal-moment-card meal-dinner">
                 <h4>🌙 Dîner</h4>
+                <p class="meal-budget" data-meal-budget="dinner" hidden></p>
                 <div class="planned-meal" data-planned-slot="dinner" hidden></div>
                 <button class="secondary-action meal-other" type="button" data-meal-type="dinner">＋ Noter autre chose</button>
                 <ul class="entry-list compact-list" data-meal-list="dinner" aria-label="Dîners ajoutés"></ul>
               </article>
               <article class="meal-moment-card meal-snack">
                 <h4>🍫 Collation</h4>
+                <p class="meal-budget" data-meal-budget="snack" hidden></p>
                 <div class="planned-meal" data-planned-slot="snack" hidden></div>
                 <button class="secondary-action meal-other" type="button" data-meal-type="snack">＋ Noter autre chose</button>
                 <ul class="entry-list compact-list" data-meal-list="snack" aria-label="Collations ajoutées"></ul>
@@ -643,9 +663,30 @@
             <h2 id="settings-title">Données locales</h2>
           </div>
 
+          <div class="settings-panel backup-panel">
+            <h3>💾 Sauvegarde de mes données</h3>
+            <p>Vos données (profil, plan, repas, historique) sont enregistrées <strong>uniquement sur ce téléphone</strong>. Si vous effacez les données de Safari ou changez de téléphone, elles sont perdues : faites une sauvegarde de temps en temps.</p>
+            <p class="backup-status" id="backup-status">Dernière sauvegarde : jamais.</p>
+            <button class="primary-action" type="button" id="backup-export">💾 Sauvegarder mes données</button>
+            <label class="secondary-action backup-import-label" for="backup-import">📂 Restaurer une sauvegarde</label>
+            <input class="scanner-input" id="backup-import" type="file" accept=".json,application/json" />
+            <p class="helper-text" id="backup-message" role="status"></p>
+
+            <details class="backup-help">
+              <summary>Comment ça marche ?</summary>
+              <ol>
+                <li><strong>Sauvegarder</strong> : appuyez sur « Sauvegarder mes données ». Sur iPhone, une fenêtre s'ouvre : choisissez « Enregistrer dans Fichiers » (iCloud Drive) ou envoyez le fichier par message ou par mail à vous-même.</li>
+                <li><strong>Restaurer</strong> (nouveau téléphone, ou après un effacement) : installez l'appli, puis appuyez sur « Restaurer une sauvegarde » et choisissez le fichier. Vos données reviennent. Attention : elles remplacent celles du téléphone.</li>
+                <li><strong>Quand ?</strong> Une fois par semaine suffit. L'appli vous le rappelle.</li>
+                <li>Le fichier n'est envoyé nulle part : il reste chez vous. Gardez-le pour vous, il contient votre profil et votre santé.</li>
+              </ol>
+            </details>
+          </div>
+
           <div class="settings-panel">
-            <p>Les informations restent sur cet appareil via localStorage.</p>
-            <button class="danger-action" type="button" id="reset-button">Reset test</button>
+            <h3>Effacer</h3>
+            <p>Supprime toutes vos données sur ce téléphone. Pensez à sauvegarder avant.</p>
+            <button class="danger-action" type="button" id="reset-button">🗑️ Tout effacer</button>
           </div>
         </section>
       </main>
@@ -674,8 +715,8 @@
       </nav>
     </div>
 
-    <script src="plan-v32.js" defer></script>
-    <script src="special-v32.js" defer></script>
-    <script src="app-v32.js" defer></script>
+    <script src="plan-v35.js" defer></script>
+    <script src="special-v35.js" defer></script>
+    <script src="app-v35.js" defer></script>
   </body>
 </html>

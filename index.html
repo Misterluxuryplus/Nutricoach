@@ -13,8 +13,8 @@
       content="MyCoachNutri aide à suivre simplement calories, repas, activité, pas et eau."
     />
     <title>MyCoachNutri</title>
-    <link rel="manifest" href="manifest.json?v=30" />
-    <link rel="stylesheet" href="style-v30.css" />
+    <link rel="manifest" href="manifest.json?v=31" />
+    <link rel="stylesheet" href="style-v31.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -145,6 +145,13 @@
           <section class="day-block" aria-labelledby="day-meals-title">
             <h3 id="day-meals-title">Repas</h3>
             <div class="plan-budget" id="plan-budget" hidden></div>
+            <section class="deficit-card" id="deficit-card" aria-live="polite" hidden>
+              <p class="deficit-card-title">📉 Mon déficit du jour</p>
+              <strong class="deficit-card-value" id="deficit-card-value">-</strong>
+              <p class="deficit-card-calc" id="deficit-card-calc"></p>
+              <p class="deficit-card-goal" id="deficit-card-goal"></p>
+              <p class="deficit-card-status" id="deficit-card-status"></p>
+            </section>
             <details class="pleasure-details" id="pleasure-details">
               <summary>🍕 Un petit plaisir aujourd’hui ? <span>Pizza, raclette, fast-food…</span></summary>
             <section class="special-meal" id="special-meal" aria-labelledby="special-title">
@@ -327,10 +334,6 @@
                 <article>
                   <span>🚶 Pas / marche</span>
                   <strong id="summary-steps">0 kcal</strong>
-                </article>
-                <article class="balance-delta-card">
-                  <span id="summary-delta-label">📉 Déficit du jour</span>
-                  <strong id="summary-delta">-</strong>
                 </article>
               </div>
 
@@ -671,8 +674,8 @@
       </nav>
     </div>
 
-    <script src="plan-v30.js" defer></script>
-    <script src="special-v30.js" defer></script>
-    <script src="app-v30.js" defer></script>
+    <script src="plan-v31.js" defer></script>
+    <script src="special-v31.js" defer></script>
+    <script src="app-v31.js" defer></script>
   </body>
 </html>

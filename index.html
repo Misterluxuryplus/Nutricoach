@@ -13,8 +13,8 @@
       content="MyCoachNutri aide à suivre simplement calories, repas, activité, pas et eau."
     />
     <title>MyCoachNutri</title>
-    <link rel="manifest" href="manifest.json?v=29" />
-    <link rel="stylesheet" href="style-v29.css" />
+    <link rel="manifest" href="manifest.json?v=30" />
+    <link rel="stylesheet" href="style-v30.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -145,43 +145,11 @@
           <section class="day-block" aria-labelledby="day-meals-title">
             <h3 id="day-meals-title">Repas</h3>
             <div class="plan-budget" id="plan-budget" hidden></div>
-            <div class="meal-moment-grid">
-              <article class="meal-moment-card meal-breakfast">
-                <h4>☀️ Petit-déjeuner</h4>
-                <div class="planned-meal" data-planned-slot="breakfast" hidden></div>
-                <button class="primary-action" type="button" data-meal-type="breakfast">Ajouter mon petit-déjeuner</button>
-                <ul class="entry-list compact-list" data-meal-list="breakfast" aria-label="Petits-déjeuners ajoutés"></ul>
-              </article>
-              <article class="meal-moment-card meal-lunch">
-                <h4>🍽️ Déjeuner</h4>
-                <div class="planned-meal" data-planned-slot="lunch" hidden></div>
-                <button class="primary-action" type="button" data-meal-type="lunch">Ajouter mon déjeuner</button>
-                <ul class="entry-list compact-list" data-meal-list="lunch" aria-label="Déjeuners ajoutés"></ul>
-              </article>
-              <article class="meal-moment-card meal-dinner">
-                <h4>🌙 Dîner</h4>
-                <div class="planned-meal" data-planned-slot="dinner" hidden></div>
-                <button class="primary-action" type="button" data-meal-type="dinner">Ajouter mon dîner</button>
-                <ul class="entry-list compact-list" data-meal-list="dinner" aria-label="Dîners ajoutés"></ul>
-              </article>
-              <article class="meal-moment-card meal-snack">
-                <h4>🍫 Collation</h4>
-                <div class="planned-meal" data-planned-slot="snack" hidden></div>
-                <button class="primary-action" type="button" data-meal-type="snack">Ajouter une collation</button>
-                <ul class="entry-list compact-list" data-meal-list="snack" aria-label="Collations ajoutées"></ul>
-              </article>
-              <article class="meal-moment-card meal-pleasure">
-                <h4>🍫 Écart / plaisir</h4>
-                <p>Un plaisir n’annule pas vos efforts. On le note simplement pour garder un repère.</p>
-                <div class="planned-meal" data-planned-slot="pleasure" hidden></div>
-                <button class="primary-action" type="button" data-meal-type="pleasure">Ajouter un écart / plaisir</button>
-                <ul class="entry-list compact-list" data-meal-list="pleasure" aria-label="Plaisirs ajoutés"></ul>
-              </article>
-            </div>
-
+            <details class="pleasure-details" id="pleasure-details">
+              <summary>🍕 Un petit plaisir aujourd’hui ? <span>Pizza, raclette, fast-food…</span></summary>
             <section class="special-meal" id="special-meal" aria-labelledby="special-title">
-              <h4 id="special-title">🧀🍔 Raclette, fast-food, restaurant…</h4>
-              <p class="helper-text">Choisissez un repas, réglez les quantités : les calories sont calculées et le reste de la journée s’adapte.</p>
+              <h4 id="special-title">🍕 Petit plaisir : pizza, raclette, fast-food…</h4>
+              <p class="helper-text">Un plaisir n’annule pas vos efforts. Choisissez-le : les calories sont calculées et le reste de la journée s’adapte pour ne pas vous priver.</p>
               <div class="chip-grid" id="special-presets"></div>
               <form class="stack special-form" id="special-form" hidden>
                 <p class="eyebrow" id="special-name"></p>
@@ -204,6 +172,40 @@
               </form>
               <p class="helper-text" id="special-status" role="status"></p>
             </section>
+            </details>
+
+            <div class="meal-moment-grid">
+              <article class="meal-moment-card meal-breakfast">
+                <h4>☀️ Petit-déjeuner</h4>
+                <div class="planned-meal" data-planned-slot="breakfast" hidden></div>
+                <button class="secondary-action meal-other" type="button" data-meal-type="breakfast">＋ Noter autre chose</button>
+                <ul class="entry-list compact-list" data-meal-list="breakfast" aria-label="Petits-déjeuners ajoutés"></ul>
+              </article>
+              <article class="meal-moment-card meal-lunch">
+                <h4>🍽️ Déjeuner</h4>
+                <div class="planned-meal" data-planned-slot="lunch" hidden></div>
+                <button class="secondary-action meal-other" type="button" data-meal-type="lunch">＋ Noter autre chose</button>
+                <ul class="entry-list compact-list" data-meal-list="lunch" aria-label="Déjeuners ajoutés"></ul>
+              </article>
+              <article class="meal-moment-card meal-dinner">
+                <h4>🌙 Dîner</h4>
+                <div class="planned-meal" data-planned-slot="dinner" hidden></div>
+                <button class="secondary-action meal-other" type="button" data-meal-type="dinner">＋ Noter autre chose</button>
+                <ul class="entry-list compact-list" data-meal-list="dinner" aria-label="Dîners ajoutés"></ul>
+              </article>
+              <article class="meal-moment-card meal-snack">
+                <h4>🍫 Collation</h4>
+                <div class="planned-meal" data-planned-slot="snack" hidden></div>
+                <button class="secondary-action meal-other" type="button" data-meal-type="snack">＋ Noter autre chose</button>
+                <ul class="entry-list compact-list" data-meal-list="snack" aria-label="Collations ajoutées"></ul>
+              </article>
+              <article class="meal-moment-card meal-pleasure">
+                <h4>🍫 Extras notés</h4>
+                <div class="planned-meal" data-planned-slot="pleasure" hidden></div>
+                <ul class="entry-list compact-list" data-meal-list="pleasure" aria-label="Plaisirs ajoutés"></ul>
+              </article>
+            </div>
+
 
             <form class="stack meal-form-panel" id="meal-form" hidden>
               <input type="hidden" name="mealType" value="breakfast" />
@@ -261,6 +263,8 @@
             </form>
           </section>
 
+          <details class="day-more">
+          <summary>🏃 Sport, pas et eau</summary>
           <section class="day-block" aria-labelledby="sport-title">
             <h3 id="sport-title">🏃 Sport</h3>
             <form class="stack" id="sport-form">
@@ -301,6 +305,8 @@
             </div>
           </section>
 
+          </details>
+
           <section class="day-block" id="day-nutrients" aria-labelledby="day-nutrients-title" hidden>
             <h3 id="day-nutrients-title">🥗 Apports du jour</h3>
             <div id="day-nutrients-body"></div>
@@ -321,10 +327,6 @@
                 <article>
                   <span>🚶 Pas / marche</span>
                   <strong id="summary-steps">0 kcal</strong>
-                </article>
-                <article>
-                  <span>⚖️ Maintien</span>
-                  <strong id="summary-maintenance">-</strong>
                 </article>
                 <article class="balance-delta-card">
                   <span id="summary-delta-label">📉 Déficit du jour</span>
@@ -669,8 +671,8 @@
       </nav>
     </div>
 
-    <script src="plan-v29.js" defer></script>
-    <script src="special-v29.js" defer></script>
-    <script src="app-v29.js" defer></script>
+    <script src="plan-v30.js" defer></script>
+    <script src="special-v30.js" defer></script>
+    <script src="app-v30.js" defer></script>
   </body>
 </html>

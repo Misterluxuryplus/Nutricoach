@@ -13,8 +13,8 @@
       content="MyCoachNutri aide à suivre simplement calories, repas, activité, pas et eau."
     />
     <title>MyCoachNutri</title>
-    <link rel="manifest" href="manifest.json?v=37" />
-    <link rel="stylesheet" href="style-v37.css" />
+    <link rel="manifest" href="manifest.json?v=38" />
+    <link rel="stylesheet" href="style-v38.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -138,8 +138,19 @@
 
         <section class="view" id="day" aria-labelledby="day-title">
           <div class="section-heading">
-            <p class="eyebrow">Aujourd’hui</p>
+            <p class="eyebrow" id="day-eyebrow">Aujourd’hui</p>
             <h2 id="day-title">Ma journée</h2>
+            <p class="day-label" id="day-label"></p>
+          </div>
+
+          <div class="day-switch" id="day-switch" role="group" aria-label="Choisir la journée" hidden>
+            <button type="button" data-day-view="today">Aujourd’hui</button>
+            <button type="button" data-day-view="past">Hier</button>
+          </div>
+          <p class="day-past-banner" id="day-past-banner" hidden>✏️ Vous modifiez la journée d’hier : ajoutez ce que vous avez oublié, le bilan se met à jour.</p>
+          <div class="day-closed" id="day-closed" hidden>
+            <p id="day-closed-text">✅ Journée terminée.</p>
+            <button class="secondary-action" type="button" id="day-reopen">✏️ Rouvrir pour ajouter un oubli</button>
           </div>
 
           <div class="backup-banner" id="backup-banner" hidden>
@@ -363,6 +374,11 @@
               <p class="kind-message" id="kind-message">Remplissez votre profil pour obtenir une estimation adaptée.</p>
             </div>
           </section>
+
+          <div class="day-finish" id="day-finish-box" hidden>
+            <button class="primary-action" type="button" id="day-finish">✓ Terminer ma journée</button>
+            <p class="helper-text">Vous pourrez la rouvrir si vous avez oublié quelque chose, ou revenir sur « Hier » le lendemain.</p>
+          </div>
         </section>
 
         <section class="view" id="plan" aria-labelledby="plan-title">
@@ -718,8 +734,8 @@
       </nav>
     </div>
 
-    <script src="plan-v37.js" defer></script>
-    <script src="special-v37.js" defer></script>
-    <script src="app-v37.js" defer></script>
+    <script src="plan-v38.js" defer></script>
+    <script src="special-v38.js" defer></script>
+    <script src="app-v38.js" defer></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "mycoachnutri-v38";
+const CACHE_NAME = "mycoachnutri-v38-b";
 const CORE_ASSETS = [
   "./",
   "./index.html",

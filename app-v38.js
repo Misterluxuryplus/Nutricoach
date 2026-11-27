@@ -409,7 +409,7 @@ function bindReset() {
     const confirmed = window.confirm("Tout effacer (profil, plan, repas, historique) ? Cette action est définitive. Avez-vous fait une sauvegarde ?");
     if (!confirmed) return;
 
-    localStorage.clear();
+    localStorage.removeItem(STORAGE_KEY); // n'efface que cette appli, pas les autres apps du même site
     state = structuredClone(defaultState);
     profileForm.reset();
     mealForm.reset();
